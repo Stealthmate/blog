@@ -27,6 +27,10 @@ url: "https://stealthmate.github.io" # the base hostname & protocol for your sit
 twitter_username: biregulartree
 github_username:  stealthmate
 
+markdown: kramdown
+highlighter: rouge
+input: GFM
+
 # Build settings
 theme: minima
 plugins:
