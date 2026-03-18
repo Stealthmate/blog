@@ -1,0 +1,16 @@
+---
+---
+
+@import "minima";
+
+details {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+
+    summary {
+        width: fit-content;
+        align-self: center;
+        cursor: pointer;
+    }
+}

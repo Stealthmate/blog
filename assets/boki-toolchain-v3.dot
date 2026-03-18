@@ -1,0 +1,32 @@
+digraph G {
+    rankdir=LR;
+    node[shape=rect];
+
+    {
+        node[style=filled,fillcolor="#00AAFF"];
+        Lexer;
+        CompilerParser[label="Compiler Parser"];
+        FormatterParser[label="Formatter Parser"];
+        Compiler;
+        Formatter;
+        ParserUtils;
+        Exporter;
+    }
+    {
+        node[style=filled,fillcolor="#FFAA00"];
+        Text;
+        Tokens;
+        CompilerNodes[label="Compiler Nodes"];
+        FormatterNodes[label="Formatter Nodes"];
+        RawData[label="Raw Data"];
+        JSON;
+    }
+
+    Text -> Lexer -> Tokens;
+    Tokens -> CompilerParser -> CompilerNodes -> Compiler -> RawData -> Exporter -> JSON;
+
+    Tokens -> FormatterParser -> FormatterNodes -> Formatter;
+    Text -> Formatter[dir=back];
+
+    FormatterParser, CompilerParser -> ParserUtils [label="depends on"];
+}

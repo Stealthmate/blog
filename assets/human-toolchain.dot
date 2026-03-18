@@ -1,0 +1,24 @@
+digraph G {
+    rankdir=LR;
+    node[shape=rect];
+    subgraph cluster_User {
+        label="User";
+        {
+            node[style=filled,fillcolor="#FFAA00"];
+            raw_data[label="JSON\n(Thoughts)"];
+            TextInHead[label="Boki Source Code\n(Imagined Text)"];
+        }
+        {
+            node[style=filled,fillcolor="#00AAFF"];
+            user_transcoder[label="Transcoder\n(Brain)"];
+            user_hands[label="Transcoder\n(Eyes & Hands)"];
+        }
+    }
+
+    TextInFile[label="Text File",style=filled,fillcolor="#FFAA00"]
+
+    raw_data -> user_transcoder -> TextInHead -> user_hands;
+    raw_data -> user_transcoder -> TextInHead -> user_hands [dir=back];
+    user_hands -> TextInFile;
+    user_hands -> TextInFile[dir=back];
+}

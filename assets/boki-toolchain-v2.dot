@@ -1,0 +1,22 @@
+digraph G {
+    rankdir=LR;
+    node[shape=rect];
+
+    {
+        node[style=filled,fillcolor="#00AAFF"];
+        Lexer;
+        Parser;
+        Compiler;
+        Exporter;
+    }
+    {
+        node[style=filled,fillcolor="#FFAA00"];
+        Text;
+        Tokens;
+        Nodes;
+        RawData[label="Raw Data"];
+        JSON;
+    }
+
+    Text -> Lexer -> Tokens -> Parser -> Nodes -> Compiler -> RawData -> Exporter -> JSON;
+}

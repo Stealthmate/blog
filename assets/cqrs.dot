@@ -1,0 +1,32 @@
+digraph G {
+    node[shape=rect];
+
+    {
+        node[style=filled,fillcolor="#00AAFF"];
+        User;
+        tooling[label="External Tools"];
+        boki[label="Boki Toolchain"];
+    }
+
+    {
+        node[style=filled,fillcolor="#FFAA00"];
+        data[label="Abstract Data"];
+        portabledata[label="JSON"];
+        Code[label="Boki Code"];
+    }
+
+    {
+        edge[color="green"];
+        User -> Code[label="writes"];
+        Code -> boki[label="parsed by"];
+    }
+
+    {
+        edge[color=red];
+        User -> tooling[xlabel="reads output of "];
+        tooling -> portabledata [label="reading data\nfrom"];
+        portabledata -> boki [xlabel="produced by"];
+    }
+
+    boki -> data[style=dashed,label=" transforms"];
+}

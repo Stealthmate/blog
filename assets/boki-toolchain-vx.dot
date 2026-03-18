@@ -1,0 +1,27 @@
+digraph G {
+    rankdir=LR;
+    node[shape=rect];
+
+    {
+        node[style=filled,fillcolor="#00AAFF"];
+        Lexer;
+        ConcreteParser[label="Concrete Parser"];
+        AbstractParser[label="Abstract Parser"];
+        Compiler;
+        Formatter;
+        Exporter;
+    }
+    {
+        node[style=filled,fillcolor="#FFAA00"];
+        Text;
+        Tokens;
+        ConcreteNodes[label="Concrete Nodes"];
+        AbstractNodes[label="Abstract Nodes"];
+        RawData[label="Raw Data"];
+        JSON;
+    }
+
+    Text -> Lexer -> Tokens -> ConcreteParser -> ConcreteNodes -> AbstractParser -> AbstractNodes -> Compiler -> RawData -> Exporter -> JSON;
+    ConcreteNodes -> Formatter;
+    Text -> Formatter[dir=back];
+}
